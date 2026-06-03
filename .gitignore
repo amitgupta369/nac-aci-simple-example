@@ -389,23 +389,11 @@ $RECYCLE.BIN/
 # vsCode
 .vscode
 
-# Ansible Collection tarball
-cisco-aac-*.tar.gz
-
-# Test Results
-test_results/
-
 #Mac Book DS_Store
 .DS_Store
 
 # temp folder
 tmp/
-
-# Ansible Collections
-ansible_collections/
-
-# Rendered Documentation
-site/
 
 # Terraform
 .terraform/
@@ -414,11 +402,8 @@ site/
 *.tfstate.backup
 *.tfplan
 
-# key
-key
-
-# Tests
-tests/
+# Test results
+tests/results/
 
 # Pabot
 .pabotsuitenames
