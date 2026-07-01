@@ -1,0 +1,15 @@
+---
+apic:
+  tenants:
+    - name: DEV
+      application_profiles:
+        - name: HR_APP
+          endpoint_groups:
+            - name: WEB_EPG
+              bridge_domain: WEB
+
+            - name: APP_EPG
+              bridge_domain: APP_BD
+
+            - name: DB_EPG
+              bridge_domain: DB_BD
