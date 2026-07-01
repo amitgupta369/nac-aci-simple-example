@@ -1,0 +1,58 @@
+name: Terraform PR Validation
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - feature*
+
+jobs:
+  terraform-plan:
+    runs-on: ubuntu-latest
+    environment: nac-aci-simple-example
+
+    env:
+      TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
+      TF_VAR_apic_username: ${{ vars.APIC_USERNAME }}
+      TF_VAR_apic_password: ${{ secrets.APIC_PASSWORD }}
+      TF_VAR_apic_url: ${{ vars.APIC_URL }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install yamllint
+        run: pip install yamllint
+
+      - name: Install TFLint
+        run: |
+          curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
+
+      - name: Terraform Format Check
+        run: terraform fmt -check -recursive
+        continue-on-error: true
+
+      - name: YAML Lint
+        run: yamllint .
+        continue-on-error: true
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Validate
+        run: terraform validate
+
+      - name: TFLint
+        run: tflint --init && tflint
+
+      - name: Terraform Plan
+        run: terraform plan

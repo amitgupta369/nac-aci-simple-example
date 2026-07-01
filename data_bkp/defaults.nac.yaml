@@ -5,4 +5,3 @@ defaults:
     tenants:
       bridge_domains:
         unicast_routing: true
-
