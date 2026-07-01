@@ -80,5 +80,8 @@ jobs:
         with:
           python-version: "3.13"
 
+      - name: Terraform Init
+        run: terraform init
+
       - name: Terraform Apply
         run: terraform apply
