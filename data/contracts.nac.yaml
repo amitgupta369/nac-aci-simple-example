@@ -1,0 +1,16 @@
+---
+apic:
+  tenants:
+    - name: DEV
+      contracts:
+        - name: WEB_TO_APP
+          subjects:
+            - name: HTTPS
+              filters:
+                - filter: TCP_443
+
+        - name: APP_TO_DB
+          subjects:
+            - name: MYSQL
+              filters:
+                - filter: TCP_3306
