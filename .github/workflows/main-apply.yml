@@ -80,4 +80,4 @@ jobs:
           python-version: "3.13"
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve tfplan
+        run: terraform apply
