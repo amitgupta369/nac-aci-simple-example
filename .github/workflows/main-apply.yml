@@ -6,9 +6,8 @@ on:
       - main
 
 jobs:
-  terraform-apply:
+  terraform-plan:
     runs-on: ubuntu-latest
-    environment: nac-aci-simple-example
 
     env:
       TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
@@ -56,5 +55,18 @@ jobs:
       - name: Terraform Plan
         run: terraform plan -out=tfplan
 
+
+
+  terraform-apply:
+    runs-on: ubuntu-latest
+    environment: nac-aci-simple-example
+
+    env:
+      TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
+      TF_VAR_apic_username: ${{ vars.APIC_USERNAME }}
+      TF_VAR_apic_password: ${{ secrets.APIC_PASSWORD }}
+      TF_VAR_apic_url: ${{ vars.APIC_URL }}
+
+    steps:
       - name: Terraform Apply
         run: terraform apply -auto-approve tfplan
