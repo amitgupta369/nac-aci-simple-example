@@ -1,17 +1,3 @@
-terraform {
-  required_providers {
-    aci = {
-      source = "CiscoDevNet/aci"
-    }
-  }
-}
-
-provider "aci" {
-  username = "username"
-  password = "password"
-  url      = "https://apic.url"
-}
-
 module "aci" {
   source  = "netascode/nac-aci/aci"
   version = "2.0.0"
