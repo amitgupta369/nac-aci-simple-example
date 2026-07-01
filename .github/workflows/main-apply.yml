@@ -58,6 +58,7 @@ jobs:
 
 
   terraform-apply:
+    needs: terraform-plan
     runs-on: ubuntu-latest
     environment: nac-aci-simple-example
 
