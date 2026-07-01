@@ -2,12 +2,23 @@
 apic:
   tenants:
     - name: DEV
-      description: My First Tenant Testing
+      description: HR Application Dev Tenant
       vrfs:
         - name: DEV-VRF
+          description: DEV VRF
       bridge_domains:
         - name: WEB
           vrf: DEV-VRF
           subnets:
             - ip: 10.10.10.1/24
+
+        - name: APP_BD
+          vrf: DEV-VRF
+          subnets:
+            - ip: 10.10.20.1/24
+
+        - name: DB_BD
+          vrf: PROD_VRF
+          subnets:
+            - ip: 10.10.30.1/24
 
