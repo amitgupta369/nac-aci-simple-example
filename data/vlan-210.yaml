@@ -1,0 +1,15 @@
+apic:
+  tenants:
+  - name: Demo2
+    vrfs:
+    - name: Demo2-VRF
+    bridge_domains:
+    - name: Demo2-Vlan-BD
+      vrf: Demo2-VRF
+      subnets:
+      - ip: 10.20.1.1/24
+    application_profiles:
+    - name: APP-PROFILE
+      endpoint_groups:
+      - name: Demo2-Vlan
+        bridge_domain: Demo2-Vlan-BD
