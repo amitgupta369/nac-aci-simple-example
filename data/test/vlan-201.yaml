@@ -1,0 +1,15 @@
+apic:
+  tenants:
+  - name: Test
+    vrfs:
+    - name: Demo
+    bridge_domains:
+    - name: Testing-VLAN-BD
+      vrf: Demo
+      subnets:
+      - ip: 10.10.10.1
+    application_profiles:
+    - name: APP-PROFILE
+      endpoint_groups:
+      - name: Testing-VLAN
+        bridge_domain: Testing-VLAN-BD
