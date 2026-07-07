@@ -7,7 +7,7 @@ apic:
     - name: Testing-VLAN-BD
       vrf: Demo
       subnets:
-      - ip: 10.10.10.1
+      - ip: 10.10.10.1/24
     application_profiles:
     - name: APP-PROFILE
       endpoint_groups:
